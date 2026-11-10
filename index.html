@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Запись в барбершоп</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root {
+      --wood: #0c0806;
+      --leather: #161009;
+      --brass: #b08d3e;
+      --cream: #e6d8bc;
+      --red: #7d1b20;
+      --blue: #173049;
+    }
+    body {
+      margin: 0;
+      padding: 20px 16px 32px;
+      font-family: 'Lora', Georgia, serif;
+      background: radial-gradient(circle at top, #1a120d 0%, var(--wood) 70%);
+      color: var(--cream);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .pole {
+      height: 14px;
+      border-radius: 7px;
+      border: 2px solid var(--brass);
+      background: repeating-linear-gradient(
+        45deg, var(--red) 0 10px, var(--cream) 10px 20px, var(--blue) 20px 30px, var(--cream) 30px 40px
+      );
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 26px;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: 0 0 4px;
+      color: var(--brass);
+    }
+    .sub {
+      text-align: center;
+      font-size: 13px;
+      font-style: italic;
+      margin: 0 0 20px;
+      opacity: 0.8;
+    }
+    .card {
+      background: var(--leather);
+      border: 1px solid var(--brass);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: inset 0 0 0 3px var(--wood), 0 6px 18px rgba(0,0,0,0.5);
+    }
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brass);
+    }
+    label:first-child { margin-top: 0; }
+    select, input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px;
+      font-size: 16px;
+      font-family: inherit;
+      background: var(--wood);
+      color: var(--cream);
+      border: 1px solid #5a4330;
+      border-radius: 6px;
+    }
+    select:focus, input:focus { outline: none; border-color: var(--brass); }
+    button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 13px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      letter-spacing: 1px;
+      border: 1px solid var(--brass);
+      border-radius: 6px;
+      background: linear-gradient(#d8b25c, #a8842f);
+      color: var(--wood);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .facts h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--brass);
+      font-size: 18px;
+      text-align: center;
+      margin: 28px 0 12px;
+    }
+    .fact {
+      background: var(--leather);
+      border-left: 3px solid var(--red);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .fact b {
+      display: block;
+      color: var(--brass);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .fact p { margin: 0; font-size: 14px; line-height: 1.45; }
+  </style>
+</head>
+<body>
+  <div class="pole"></div>
+  <h1>Запись к мастеру</h1>
+  <p class="sub">Est. 1952 · Traditional Gentleman's Barber</p>
+
+  <div class="card">
+    <label for="service">Услуга</label>
+    <select id="service">
+      <option>Стрижка — 800 ₽</option>
+      <option>Стрижка + борода — 1200 ₽</option>
+      <option>Борода — 500 ₽</option>
+    </select>
+
+    <label for="date">Дата</label>
+    <input id="date" type="date">
+
+    <label for="time">Время</label>
+    <input id="time" type="time">
+
+    <label for="name">Имя</label>
+    <input id="name" type="text" placeholder="Как к вам обращаться">
+
+    <button id="send">Записаться</button>
+  </div>
+
+  <section class="facts">
+    <h2>Немного истории</h2>
+    <div class="fact">
+      <b>Полосатый столб</b>
+      <p>По одной из версий красный и синий цвета напоминают кровь и бинты. Цирюльники когда-то пускали кровь и перевязывали, поэтому на столбе такие цвета.</p>
+    </div>
+    <div class="fact">
+      <b>Откуда слово «barber»</b>
+      <p>Оно восходит к латинскому barba, то есть борода. Цирюльник изначально занимался именно бородой.</p>
+    </div>
+    <div class="fact">
+      <b>Горячее полотенце</b>
+      <p>Английская традиция бритья: горячее полотенце размягчает кожу и щетину, после него бритьё мягче и гладче.</p>
+    </div>
+    <div class="fact">
+      <b>Барбершоп как клуб</b>
+      <p>В XIX веке мужчины приходили в цирюльню не только стричься. Там обсуждали новости, политику и спорт. Так барбершоп стал мужским клубом.</p>
+    </div>
+  </section>
+
+  <script>
+    const tg = window.Telegram && window.Telegram.WebApp;
+    if (tg) { tg.ready(); tg.expand(); }
+
+    document.getElementById('send').addEventListener('click', () => {
+      const data = {
+        service: document.getElementById('service').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        name: document.getElementById('name').value,
+      };
+
+      if (!data.date || !data.time || !data.name) {
+        alert('Заполни дату, время и имя');
+        return;
+      }
+
+      if (tg) {
+        tg.sendData(JSON.stringify(data));
+      } else {
+        alert('Открой через Telegram. Заявка: ' + JSON.stringify(data));
+      }
+    });
+  </script>
+</body>
+</html>
